@@ -19,6 +19,7 @@ export default function Chat() {
     setInput('');
     setIsFetching(true);
   }
+
   useEffect(() => {
     if (!isFetching) return;
     async function startConversation() {
@@ -32,11 +33,11 @@ export default function Chat() {
           },
         ]);
       }
-      setIsFetching(false);
     }
     startConversation();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFetching])
+    setIsFetching(false);
+  }, [isFetching, messages]);
+  
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
       {messages.map((m, i) => (
